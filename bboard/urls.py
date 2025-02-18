@@ -30,7 +30,7 @@ urlpatterns = [
     path('<int:rubric_id>/', BbRubricBbsView.as_view(), name='by_rubric'),
 
     path('detail/<int:pk>/', BbDetailView.as_view(), name='detail'),
-
+    path('create/', BbCreateView.as_view(), name='create'),
     path('', index, name='index'),
     # path('', BbIndexView.as_view(), name='index'),
 ]
