@@ -225,10 +225,10 @@ def create_ice_cream(request):
         form = IceCreamForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'success.html', {'message': 'Мороженое успешно добавлено!'})
+            return render(request, 'bboard/success.html', {'message': 'Мороженое успешно добавлено!'})
         else:
-            return render(request, 'create_ice_cream.html', {'form': form, 'error': 'Ошибка в заполнении формы!'})
+            return render(request, 'bboard/create_ice_cream.html', {'form': form, 'error': 'Ошибка в заполнении формы!'})
     else:
         form = IceCreamForm()
     
-    return render(request, 'create_ice_cream.html', {'form': form})
+    return render(request, 'bboard/create_ice_cream.html', {'form': form})
