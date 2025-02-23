@@ -151,3 +151,13 @@ class Bb(models.Model):
         unique_together = ('title', 'published')
         verbose_name = 'Объявление'
         verbose_name_plural = 'Объявления'
+
+
+class IceCream(models.Model):
+    name = models.CharField(max_length=100)
+    flavor = models.CharField(max_length=50)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    in_stock = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name

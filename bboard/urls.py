@@ -6,7 +6,9 @@ from bboard.models import Bb
 from bboard.views import (index, by_rubric, BbCreateView,
                           add_and_save, bb_detail, BbRubricBbsView,
                           BbDetailView, BbEditView, BbDeleteView, BbIndexView,
-                          BbRedirectView, edit)
+                          BbRedirectView, edit, create_ice_cream)
+
+
 
 app_name = 'bboard'
 
@@ -33,4 +35,5 @@ urlpatterns = [
     path('create/', BbCreateView.as_view(), name='create'),
     path('', index, name='index'),
     # path('', BbIndexView.as_view(), name='index'),
+    path('create_ice_cream/', create_ice_cream, name='create_ice_cream'),
 ]

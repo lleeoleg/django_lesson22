@@ -1,6 +1,6 @@
 from django.forms import ModelForm, modelform_factory, DecimalField
 from django.forms.widgets import Select
-from bboard.models import Bb, Rubric
+from bboard.models import Bb, Rubric, IceCream
 from django import forms
 from django.contrib.auth.models import User
 from django.core import validators
@@ -62,3 +62,8 @@ class RegisterUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2', 'first_name', 'last_name')
+
+class IceCreamForm(forms.ModelForm):
+    class Meta:
+        model = IceCream
+        fields = '__all__'

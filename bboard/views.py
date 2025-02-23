@@ -17,6 +17,7 @@ from django.views.generic.edit import CreateView, FormView, UpdateView, DeleteVi
 
 from bboard.forms import BbForm
 from bboard.models import Bb, Rubric
+from bboard.forms import IceCreamForm
 
 
 # Основной (вернуть)
@@ -218,3 +219,14 @@ class BbDeleteView(DeleteView):
         context['rubrics'] = Rubric.objects.annotate(
                                             cnt=Count('bb')).filter(cnt__gt=0)
         return context
+
+def create_ice_cream(request):
+    if request.method == "POST":
+        form = IceCreamForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('create_ice_cream')
+    else:
+        form = IceCreamForm()
+    
+    return render(request, 'bboard/create_ice_cream.html', {'form': form})
