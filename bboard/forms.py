@@ -5,7 +5,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.core import validators
 from django.core.exceptions import ValidationError
-
+import re
 # class BbForm(ModelForm):
 #     class Meta:
 #         model = Bb
@@ -67,3 +67,26 @@ class IceCreamForm(forms.ModelForm):
     class Meta:
         model = IceCream
         fields = '__all__'
+
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+        if not name:
+            raise forms.ValidationError("Название не может быть пустым.")
+        if not re.match(r'^[a-zA-Zа-яА-Я\s]+$', name):
+            raise forms.ValidationError("Название должно содержать только буквы.")
+        if len(name) > 100:
+            raise forms.ValidationError("Название слишком длинное (максимум 100 символов).")
+        return name
+
+    def clean_flavor(self):
+        flavor = self.cleaned_data.get('flavor')
+        allowed_flavors = ["ваниль", "шоколад", "клубника", "фисташка"]
+        if flavor.lower() not in allowed_flavors:
+            raise forms.ValidationError(f"Вкус должен быть из списка: {', '.join(allowed_flavors)}.")
+        return flavor
+
+    def clean_price(self):
+        price = self.cleaned_data.get('price')
+        if price <= 0:
+            raise forms.ValidationError("Цена должна быть больше 0.")
+        return price
