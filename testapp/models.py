@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
 
 class AdvUser(models.Model):
     is_activated = models.BooleanField(default=True)
@@ -21,4 +22,30 @@ class Kit(models.Model):
     machine = models.ForeignKey(Machine, on_delete=models.CASCADE)
     spare = models.ForeignKey(Spare, on_delete=models.CASCADE)
     count = models.IntegerField(default=0)
+
+class Note(models.Model):
+    content = models.TextField()
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+    
+# Прямое наследование
+class Message(models.Model):
+    content = models.TextField()
+    name = models.CharField(max_length=30)
+    email = models.EmailField()
+        
+    class Meta:
+        abstract = True
+        ordering = ['name']
+
+class PrivateMessage(Message):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=40)
+    email = None
+    
+    
+    # class Meta:
+    #     ordering = ['order', 'name']
+    
 
