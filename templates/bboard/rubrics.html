@@ -1,0 +1,18 @@
+{% extends "layout/basic.html" %}
+
+{% load django_bootstrap5 %}
+
+{% block title %}Изменение рубрик{% endblock %}
+
+{% block content %}
+<h2>Изменение рубрик</h2>
+    <form method="post">
+        {% csrf_token %}
+        
+{#        {{ formset.as_p }}#}
+        {% bootstrap_formset formset %}
+        {% bootstrap_button 'Сохранить' %}
+        
+{#        <button type="submit">Сохранить</button>#}
+    </form>
+{% endblock %}
