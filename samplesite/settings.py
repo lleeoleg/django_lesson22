@@ -78,6 +78,13 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            # 'libraries': {
+            #     # 'bbtags': 'bboard.bbtags',
+            #     'tg': 'bboard.bbtags',
+            # },
+            # 'builtins': [                
+            #     'bboard.bbtags',
+            # ],
         },
     },
 ]

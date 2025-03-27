@@ -1,23 +1,40 @@
 {% extends "layout/basic.html" %}
+{% load bbtags %}
 
 
 {% block title %}{{ bb.title }}{% endblock %}
 
 {% block content %}
+
+{% lst ', ' '1' 'почему в чизбургер не добавляют утюг?' %}
+
+{% ulist '1' '2' '3' '4' '5' %}
+
+
+{% mytag "apple,banana,grape" "," %}
+
     <div>
         <p>Рубрика: <a href="{% url 'bboard:by_rubric' bb.rubric.pk %}">
                                                 {{ bb.rubric.name }}</a></p>
         <h2>{{ bb.title }}</h2>
-
         <p>{{ bb.content }}</p>
-{#        <p>{{ parsed_content|safe }}</p>#}
-{#        <p>{{ bb.content.rendered }}</p>#}
+{#        <p>Цена: <strong>{{ bb.price|floatformat:'2g' }}</strong> тг.</p>#}
+{#        <p>Цена: {{ bb.price|currency:'пессо'|safe }}</p>#}
+{#        <p>Цена: {{ bb.price|currency|safe }}</p>#}
+        <p>Цена: {{ bb.price|currency }}</p>
 
-        <p>Цена: <strong>{{ bb.price|floatformat:'2g' }}</strong> тг.</p>
+
         <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
         <p>
             <a href="{% url 'bboard:edit' bb.pk %}">Изменить</a> |
             <a href="{% url 'bboard:delete' bb.pk %}">Удалить</a>
         </p>
+
+
+        {{ "DjangoExample22222"|dividestring }}
+
+
+
+
     </div>
 {% endblock %}
