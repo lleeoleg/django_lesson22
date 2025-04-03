@@ -1,0 +1,32 @@
+{% extends "layout/basic.html" %}
+
+{% load django_bootstrap5 %}
+
+{% block title %}Добавление объявления{% endblock %}
+
+{% block content %}
+<h2>Добавление объявления</h2>
+
+    {% if form.is_multipart %}
+        <form method="post" enctype="multipart/form-data">
+    {% else %}
+        <form method="post">
+    {% endif %}
+
+        {% csrf_token %}
+
+{#        {% bootstrap_form form %}#}
+{#        {% bootstrap_form form exclude='price,rubric' %}#}
+{#        {% bootstrap_form form show_help=False show_label=False %}#}
+{#        {% bootstrap_form form size='sm' %}#}
+{#        {% bootstrap_form form required_css_class='SOMECLASS' %}#}
+{#        {% bootstrap_form form success_css_class='has-success' error_css_class='has-error' %}#}
+{#        {% bootstrap_form form wrapper_class='SOMECLASS' %}#}
+{#        {% bootstrap_form form layout='vertical' %}#}
+{#        {% bootstrap_form form layout='horizontal' %}#}
+{#        {% bootstrap_form form layout='floating' %}#}
+
+        {% bootstrap_button 'Добавить' %}
+
+</form>
+{% endblock %}
