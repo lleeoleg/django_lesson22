@@ -1,0 +1,16 @@
+{% extends "layout/basic.html" %}
+
+{% load thumbnail %}
+
+
+{% block content %}
+
+    {% for img in imgs %}
+        <p>
+            <img src="{{ img.image|thumbnail_url:'default' }}">
+            <img src="{% thumbnail img.image 'default' bw=False %}">
+            <img src="{{ img.image.url }}">
+        </p>
+    {% endfor %}
+
+{% endblock %}

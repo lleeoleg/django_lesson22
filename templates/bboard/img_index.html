@@ -1,0 +1,11 @@
+{% extends "layout/basic.html" %}
+
+{% block content %}
+
+    {% for img in imgs %}
+        <p>
+            <img src="{% url 'bboard:get_img' filename=img %}">
+        </p>
+    {% endfor %}
+
+{% endblock %}
