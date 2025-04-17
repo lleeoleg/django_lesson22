@@ -1,0 +1,21 @@
+{% extends "layout/basic.html" %}
+
+{% load django_bootstrap5 %}
+
+{% block title %}Добавление изображения{% endblock %}
+
+{% block content %}
+<h2>Добавление изображения</h2>
+    {% if form.is_multipart %}
+        <form method="post" enctype="multipart/form-data">
+    {% else %}
+        <form method="post">
+    {% endif %}
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% bootstrap_button 'Добавить' %}
+
+{#<img src="{{ img.image.url }}" alt="">#}
+        
+</form>
+{% endblock %}
