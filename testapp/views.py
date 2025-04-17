@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.core.mail import EmailMessage, get_connection, EmailMultiAlternatives, send_mail
+from django.core.mail import EmailMessage, get_connection, EmailMultiAlternatives, send_mail, send_mass_mail
 from django.template.loader import render_to_string
 
 def test_cookie(request):
@@ -101,6 +101,13 @@ def test_cookie(request):
 # высокоуровневый способ отправки почты
 
 def email(request):
-    send_mail('test mail', 'test!!!', 'webmaster@localhost', ['vpupkin@mail.ru'], html_message='<h1>Test message</h1>')
+    # send_mail('test mail', 'test!!!', 'webmaster@localhost', ['vpupkin@mail.ru'], html_message='<h1>Test message</h1>')
+    
+    # Рассылка через высокоуровневый способ
+    # msg1 = ('Подписка', 'Подтвердите подписку', 'webmaster@localhost', ['vpupkin1@mail.ru', 'vpupkin2@mail.ru'])
+    # msg2 = ('Отписка', 'Подтвердите отписку', 'webmaster@localhost', ['vpupkin1@mail.ru', 'vpupkin2@mail.ru'])
+    # send_mass_mail([msg1, msg2])
+
+    
     
     return render(request, 'testapp/test_cookie.html')

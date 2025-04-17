@@ -308,4 +308,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_FILE_PATH = ''
 
 
-
+ADMINS = [
+    ('Admin1', 'admin1@mail.ru'),
+    ('Admin2', 'admin2@mail.ru'),
+    ('Admin3', 'admin3@mail.ru'),
+]
