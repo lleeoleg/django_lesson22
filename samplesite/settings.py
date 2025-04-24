@@ -48,12 +48,19 @@ INSTALLED_APPS = [
 
     'bboard',  # 'bboard.apps.BboardConfig',
     'testapp',
+    'api',
+    
     # 'todolist',
-]
+    'rest_framework',
+    'corsheaders',
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    
+    'corsheaders.middleware.CorsMiddleware',
+    
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -290,7 +297,7 @@ THUMBNAIL_PREFIX = "thumb_"
 # EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 # EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
 # EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # DEFAULT_FROM_EMAIL = 'webmaster@localhost'
@@ -313,3 +320,45 @@ ADMINS = [
     ('Admin2', 'admin2@mail.ru'),
     ('Admin3', 'admin3@mail.ru'),
 ]
+
+
+
+#############################
+#### Настройка для GMAIL #####
+#############################
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'lioleg1402@gmail.com'
+EMAIL_HOST_PASSWORD = 'wibq bmbb gtcf ftck'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+################################
+###### CORSHEADERS SETTINGS ####
+################################
+
+CORS_ALLOWED_ALL_ORIGINS = True
+
+CORS_URLS_REGEX = r'^/api/.*$'
+
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:5500',
+]
+
+# CORS_ALLOWED_ORIGINS = [
+#     'http://www.bboard.kz',
+#     'https://www.bboard.kz',
+#     'http://admin.bboard.kz',
+# ]
+
+# CORS_ALLOWED_ORIGINS_REGEX = [
+#     r'^https?://(www|admin)\.bboard.kz$',
+#     r'^http?://(www\.)?bb\.net$',
+    
+# ]
+
+# CORS_ALLOWED_METHODS = ['GET', 'POST']
+

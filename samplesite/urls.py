@@ -46,6 +46,8 @@ urlpatterns = [
          name='password_reset_confirm'),
     path('accounts/reset/done/', PasswordResetCompleteView.as_view(),
          name='password_reset_complete'),
+    
+    path('api/', include('api.urls', namespace='api'))
 ]
 
 urlpatterns += [
