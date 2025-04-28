@@ -6,5 +6,5 @@ app_name = 'api'
 
 urlpatterns = [
     path('rubrics/', api_rubrics),
-    path('rubrics/<int:pk>', api_rubric_detail)
+    path('rubrics/<int:pk>/', api_rubric_detail)
 ]
