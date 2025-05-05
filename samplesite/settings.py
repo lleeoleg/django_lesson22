@@ -362,3 +362,19 @@ CORS_ALLOWED_ORIGINS = [
 
 # CORS_ALLOWED_METHODS = ['GET', 'POST']
 
+
+
+################################
+##### DJANGO REST FRAMEWORK ####
+################################
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+            'rest_framework.permissions.AllowAny',
+            # 'rest_framework.permissions.IsAuthenticated',
+            # 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+            # 'rest_framework.permissions.IsAdminUser',
+            # 'rest_framework.permissions.DjangoModelPermissions',
+            # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+
+        ),
+}

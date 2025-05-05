@@ -1,10 +1,11 @@
 from django.http import JsonResponse
 from bboard.models import Rubric
 from api.serializers import RubricSerializer
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status, generics
 from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
 
 # def api_rubrics(request):
 #     if request.method == 'GET':
@@ -16,6 +17,7 @@ from rest_framework.views import APIView
 
 
 @api_view(['GET', 'POST'])
+@permission_classes((IsAuthenticated,))
 def api_rubrics(request):
     if request.method == 'GET':
         rubrics = Rubric.objects.all()
@@ -71,7 +73,17 @@ def api_rubric_detail(request, pk):
 class APIRubrics(generics.ListCreateAPIView):
     queryset = Rubric.objects.all()
     serializer_class = RubricSerializer
+    permission_classes = (IsAuthenticated,)  
+
 
 class APIRubricDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Rubric.objects.all()
     serializer_class = RubricSerializer
+    permission_classes = (IsAuthenticated,)
+    
+    
+class APIRubricList(generics.ListAPIView):
+    queryset = Rubric.objects.all()
+    serializer_class = RubricSerializer
+    permission_classes = (IsAuthenticated,)
+    

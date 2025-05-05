@@ -229,3 +229,4 @@ class Img(models.Model):
     class Meta:
         verbose_name = 'Изображение'
         verbose_name_plural = 'Изображения'
+

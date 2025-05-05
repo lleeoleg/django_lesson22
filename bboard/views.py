@@ -432,3 +432,5 @@ def delete_img(request, pk):
     img.image.delete(save=False)
     img.delete()
     return redirect('bboard:index')
+
+
