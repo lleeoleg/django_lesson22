@@ -34,6 +34,10 @@ from bboard.forms import BbForm, RubricBaseFormSet, SearchForm, ImgForm
 from bboard.models import Bb, Rubric, Img
 
 
+
+
+from rest_framework.decorators import api_view, permission_classes
+
 # Основной (вернуть)
 # def index(request):
 #     bbs = Bb.objects.order_by('-published')
@@ -166,7 +170,6 @@ class BbCreateView(LoginRequiredMixin, UserPassesTestMixin,
         context['rubrics'] = Rubric.objects.annotate(
                                             cnt=Count('bb')).filter(cnt__gt=0)
         return context
-
 
 def add_and_save(request):
     if request.method == 'POST':
