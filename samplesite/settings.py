@@ -96,28 +96,28 @@ WSGI_APPLICATION = 'samplesite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# if DEBUG:
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
 
-        # 'ATOMIC_REQUESTS': False,  # по умолчанию, каждая операция в отдельной транзакции
-        # 'ATOMIC_REQUESTS': True,   # атомарные запросы, все операции в одной транезакции
-        # 'AUTOCOMMIT': True,        # по умолчанию, автоматическое завершение транзакций
+            # 'ATOMIC_REQUESTS': False,  # по умолчанию, каждая операция в отдельной транзакции
+            # 'ATOMIC_REQUESTS': True,   # атомарные запросы, все операции в одной транезакции
+            # 'AUTOCOMMIT': True,        # по умолчанию, автоматическое завершение транзакций
+        }
     }
-}
-# else:
-#     DATABASES = {
-#         "default": {
-#             "ENGINE": "django.db.backends.postgresql",
-#             "NAME": "django_db",
-#             "USER": "django_user",
-#             "PASSWORD": "1234",
-#             "HOST": "127.0.0.1",
-#             "PORT": "5432",
-#         }
-#     }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": "django_db",
+            "USER": "django_user",
+            "PASSWORD": "1234",
+            "HOST": "127.0.0.1",
+            "PORT": "5432",
+        }
+    }
 
 
 # Password validation
